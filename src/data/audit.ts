@@ -2,6 +2,11 @@ import arvLinkedin from "@/assets/arv-linkedin.png.asset.json";
 import igarashiWebsite from "@/assets/igarashi-website.png.asset.json";
 import igarashiLinkedin from "@/assets/igarashi-linkedin.png.asset.json";
 import neccoWebsite from "@/assets/necco-website.png.asset.json";
+import neccoLinkedin from "@/assets/necco-linkedin.png.asset.json";
+import sundaramWebsite from "@/assets/sundaram-website.png.asset.json";
+import sundaramLinkedin from "@/assets/sundaram-linkedin.png.asset.json";
+import raneLinkedin from "@/assets/rane-linkedin.png.asset.json";
+import sancraftLinkedin from "@/assets/sancraft-linkedin.png.asset.json";
 
 export type Evidence = {
   url: string;
@@ -117,6 +122,10 @@ export const auditEntries: AuditEntry[] = [
         url: neccoWebsite.url,
         caption: "Necco Tools — page content delivered as flat images",
       },
+      {
+        url: neccoLinkedin.url,
+        caption: "Necco Tools LinkedIn — no posts yet on the company page",
+      },
     ],
   },
   {
@@ -140,7 +149,16 @@ export const auditEntries: AuditEntry[] = [
     linkedin: "https://www.linkedin.com/company/sundram-fasteners",
     followers: 6000,
     followersLabel: "6,000",
-    evidence: [],
+    evidence: [
+      {
+        url: sundaramWebsite.url,
+        caption: "Sundram Fasteners website — dated visual presentation",
+      },
+      {
+        url: sundaramLinkedin.url,
+        caption: "Sundram Fasteners LinkedIn — last post around 6 months ago",
+      },
+    ],
   },
   {
     id: "rane-engine-valves",
@@ -159,7 +177,12 @@ export const auditEntries: AuditEntry[] = [
       "https://www.linkedin.com/company/rane-engine-valve-limited-revl/?originalSubdomain=in",
     followers: 7000,
     followersLabel: "7,000",
-    evidence: [],
+    evidence: [
+      {
+        url: raneLinkedin.url,
+        caption: "Rane Engine Valve LinkedIn — last post around 2 years ago",
+      },
+    ],
   },
   {
     id: "sancraft",
@@ -177,7 +200,12 @@ export const auditEntries: AuditEntry[] = [
     linkedin: "https://www.linkedin.com/company/sancraft-industries-pvt-ltd/",
     followers: 497,
     followersLabel: "497",
-    evidence: [],
+    evidence: [
+      {
+        url: sancraftLinkedin.url,
+        caption: "Sancraft Industries LinkedIn — no posts yet on the page",
+      },
+    ],
   },
 ];
 
