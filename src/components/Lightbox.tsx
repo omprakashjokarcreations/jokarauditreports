@@ -7,7 +7,7 @@ type LightboxProps = {
   items: Evidence[];
   index: number | null;
   onIndexChange: (index: number | null) => void;
-  title?: string;
+  title?: string | undefined;
 };
 
 export function Lightbox({ items, index, onIndexChange, title }: LightboxProps) {
