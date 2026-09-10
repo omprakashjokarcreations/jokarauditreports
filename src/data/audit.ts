@@ -2,6 +2,11 @@ import arvLinkedin from "@/assets/arv-linkedin.png.asset.json";
 import igarashiWebsite from "@/assets/igarashi-website.png.asset.json";
 import igarashiLinkedin from "@/assets/igarashi-linkedin.png.asset.json";
 import neccoWebsite from "@/assets/necco-website.png.asset.json";
+import neccoLinkedin from "@/assets/necco-linkedin.png.asset.json";
+import sundaramWebsite from "@/assets/sundaram-website.png.asset.json";
+import sundaramLinkedin from "@/assets/sundaram-linkedin.png.asset.json";
+import raneLinkedin from "@/assets/rane-linkedin.png.asset.json";
+import sancraftLinkedin from "@/assets/sancraft-linkedin.png.asset.json";
 
 export type Evidence = {
   url: string;
