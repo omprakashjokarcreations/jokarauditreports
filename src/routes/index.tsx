@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { useMemo, useState } from "react";
 
-import whiteLogo from "@/assets/white_logo.png.asset.json";
+import whiteLogo from "@/assets/white-logo.png";
 import { Lightbox } from "@/components/Lightbox";
 import {
   allServices,
@@ -63,148 +63,173 @@ function AuditCard({
   onDownload: () => void;
 }) {
   return (
-    <article
-      id={entry.id}
-      data-card="true"
+    <div
+      data-print-container="true"
       data-print={isPrintTarget ? "true" : undefined}
-      className="card-surface print-page flex break-inside-avoid flex-col overflow-hidden rounded-2xl border transition-shadow hover:shadow-brand"
+      className="print-page-container"
     >
-      {/* Banner */}
-      <div className="bg-brand-gradient-soft relative border-b px-5 py-5 sm:px-6">
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex min-w-0 items-center gap-3">
-            <span className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-white p-2 shadow-lg">
-              <img
-                src={entry.logo}
-                alt={`${entry.company} logo`}
-                className="max-h-full max-w-full object-contain"
-              />
-            </span>
-            <div className="min-w-0">
-              <h2 className="truncate text-lg font-semibold tracking-tight sm:text-xl">
-                {entry.company}
-              </h2>
-              <p className="mt-0.5 line-clamp-2 text-xs text-muted-foreground">
-                {entry.industry}
-              </p>
-            </div>
-          </div>
-          <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-background/60 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
-            <Users className="size-3" />
-            {entry.followersLabel}
-          </span>
-        </div>
-
-        {/* Pitch first */}
-        <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-          What we pitch
-        </p>
-        <div className="mt-2 flex flex-wrap gap-2">
-          {entry.potential.map((item) => (
-            <span
-              key={item}
-              className="rounded-full bg-brand-gradient px-3 py-1 text-[11px] font-semibold text-primary-foreground"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div className="border-b px-5 py-4 sm:px-6">
-        <p className="text-sm font-medium leading-relaxed">{entry.verdict}</p>
-      </div>
-
-      <div className="flex-1 px-5 py-5 sm:px-6">
-        <ul className="space-y-4">
-          {entry.findings.map((finding) => {
-            const Icon = areaIcon[finding.area];
-            return (
-              <li key={finding.area} className="flex gap-3">
-                <span className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-lg bg-secondary text-muted-foreground">
-                  <Icon className="size-3.5" />
-                </span>
-                <div className="min-w-0">
-                  <p className="text-sm font-semibold text-brand-gradient">
-                    {finding.short}
-                  </p>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                    {finding.detail}
-                  </p>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-
-      {entry.evidence.length > 0 && (
-        <div className="border-t px-5 py-5 sm:px-6">
-          <div className="grid grid-cols-2 gap-3">
-            {entry.evidence.map((item, i) => (
-              <button
-                key={item.url}
-                type="button"
-                onClick={() => onPreview(i)}
-                className="group relative overflow-hidden rounded-xl ring-1 ring-border transition hover:ring-2 hover:ring-brand-purple focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                aria-label={`Preview: ${item.caption}`}
-              >
+      <article
+        id={entry.id}
+        data-card="true"
+        data-print={isPrintTarget ? "true" : undefined}
+        className="card-surface print-page relative flex break-inside-avoid flex-col overflow-hidden rounded-2xl border transition-shadow hover:shadow-brand"
+      >
+        {/* Banner */}
+        <div className="bg-brand-gradient-soft relative z-10 border-b px-5 py-5 sm:px-6">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex min-w-0 items-center gap-3">
+              <span className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-white p-2 shadow-lg">
                 <img
-                  src={item.url}
-                  alt={item.caption}
-                  loading="lazy"
-                  className="aspect-[4/3] w-full object-cover object-top opacity-90 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
+                  src={entry.logo}
+                  alt={`${entry.company} logo`}
+                  className="max-h-full max-w-full object-contain"
                 />
-                <span className="no-print pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-center gap-1.5 bg-gradient-to-t from-black/85 to-transparent pb-2 pt-6 text-[11px] font-semibold text-white">
-                  <Maximize2 className="size-3" />
-                  Click here to view
-                </span>
-              </button>
+              </span>
+              <div className="min-w-0">
+                <h2 className="truncate text-lg font-semibold tracking-tight sm:text-xl">
+                  {entry.company}
+                </h2>
+                <p className="mt-0.5 line-clamp-2 text-xs text-muted-foreground">
+                  {entry.industry}
+                </p>
+              </div>
+            </div>
+            <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-background/60 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+              <Users className="size-3" />
+              {entry.followersLabel}
+            </span>
+          </div>
+
+          {/* Pitch first */}
+          <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+            What we pitch
+          </p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {entry.potential.map((item) => (
+              <span
+                key={item}
+                className="rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow-sm"
+              >
+                {item}
+              </span>
             ))}
           </div>
         </div>
-      )}
 
-      <div className="mt-auto border-t px-5 py-4 sm:px-6">
-        <div className="flex flex-wrap items-center gap-2">
-          {entry.website ? (
+        <div className="relative z-10 border-b px-5 py-4 sm:px-6">
+          <p className="text-sm font-medium leading-relaxed">{entry.verdict}</p>
+        </div>
+
+        <div className="relative z-10 flex-1 px-5 py-5 sm:px-6">
+          <ul className="space-y-4">
+            {entry.findings.map((finding) => {
+              const Icon = areaIcon[finding.area];
+              return (
+                <li key={finding.area} className="flex gap-3">
+                  <span className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-lg bg-secondary text-muted-foreground">
+                    <Icon className="size-3.5" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-primary">
+                      {finding.short}
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                      {finding.detail}
+                    </p>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        {entry.evidence.length > 0 && (
+          <div className="relative z-10 border-t px-5 py-5 sm:px-6">
+            <div className="grid grid-cols-2 gap-3">
+              {entry.evidence.map((item, i) => (
+                <button
+                  key={item.url}
+                  type="button"
+                  onClick={() => onPreview(i)}
+                  className="group relative overflow-hidden rounded-xl ring-1 ring-border transition hover:ring-2 hover:ring-brand-purple focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  aria-label={`Preview: ${item.caption}`}
+                >
+                  <img
+                    src={item.url}
+                    alt={item.caption}
+                    loading="lazy"
+                    className="aspect-[4/3] w-full object-cover object-top opacity-90 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
+                  />
+                  <span className="no-print pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-center gap-1.5 bg-gradient-to-t from-black/85 to-transparent pb-2 pt-6 text-[11px] font-semibold text-white">
+                    <Maximize2 className="size-3" />
+                    Click here to view
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="relative z-10 mt-auto border-t px-5 py-4 sm:px-6">
+          <div className="flex flex-wrap items-center gap-2">
+            {entry.website ? (
+              <a
+                href={entry.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition hover:bg-accent"
+              >
+                <Globe className="size-3.5" />
+                Website
+                <ExternalLink className="size-3 opacity-60" />
+              </a>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 rounded-lg bg-secondary px-3 py-1.5 text-xs font-medium text-muted-foreground">
+                <Globe className="size-3.5" />
+                No website
+              </span>
+            )}
             <a
-              href={entry.website}
+              href={entry.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 rounded-lg bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition hover:bg-accent"
             >
-              <Globe className="size-3.5" />
-              Website
+              <Linkedin className="size-3.5" />
+              LinkedIn
               <ExternalLink className="size-3 opacity-60" />
             </a>
-          ) : (
-            <span className="inline-flex items-center gap-1.5 rounded-lg bg-secondary px-3 py-1.5 text-xs font-medium text-muted-foreground">
-              <Globe className="size-3.5" />
-              No website
-            </span>
-          )}
-          <a
-            href={entry.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-lg bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground transition hover:bg-accent"
-          >
-            <Linkedin className="size-3.5" />
-            LinkedIn
-            <ExternalLink className="size-3 opacity-60" />
-          </a>
-          <button
-            type="button"
-            onClick={onDownload}
-            className="no-print ml-auto inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium text-muted-foreground ring-1 ring-border transition hover:bg-secondary hover:text-foreground"
-          >
-            <Download className="size-3.5" />
-            Download page
-          </button>
+            <button
+              type="button"
+              onClick={onDownload}
+              className="no-print ml-auto inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium text-muted-foreground ring-1 ring-border transition hover:bg-secondary hover:text-foreground"
+            >
+              <Download className="size-3.5" />
+              Download page
+            </button>
+          </div>
         </div>
-      </div>
-    </article>
+
+        {/* Printable page footer with full legible Jokar logo on the right bottom */}
+        <div className="hidden relative z-10 print:flex items-center justify-between border-t border-border/40 px-6 py-2.5 mt-auto">
+          <div className="flex flex-col text-[11px] leading-tight text-muted-foreground">
+            <span className="font-semibold text-foreground/90">
+              Om Prakash Esakkimuthu
+            </span>
+            <span className="text-[10px] text-primary font-medium">
+              Business Development
+            </span>
+          </div>
+          <div className="flex items-center justify-end pl-4">
+            <img
+              src={whiteLogo}
+              alt="Jokar Creations Pvt. Ltd."
+              className="h-7 w-auto max-w-[130px] object-contain"
+            />
+          </div>
+        </div>
+      </article>
+    </div>
   );
 }
 
@@ -244,9 +269,9 @@ function AuditPage() {
         <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 sm:px-6">
           <a href="/" className="flex min-w-0 items-center">
             <img
-              src={whiteLogo.url}
+              src={whiteLogo}
               alt="Jokar Creations Pvt. Ltd."
-              className="h-8 w-auto sm:h-9"
+              className="h-8 w-auto object-contain sm:h-9"
             />
           </a>
           <span className="shrink-0 text-[11px] font-medium text-muted-foreground sm:text-xs">
@@ -255,13 +280,53 @@ function AuditPage() {
         </div>
       </header>
 
-      <section className="border-b">
+      {/* Downloadable / Print Cover Page (Page 1 in Full Report PDF) */}
+      <section className="print-cover-page hidden print:flex flex-col justify-center items-center text-center relative overflow-hidden">
+        <div className="relative z-10 flex flex-col items-center max-w-2xl px-6">
+          <img
+            src={whiteLogo}
+            alt="Jokar Creations Pvt. Ltd."
+            className="h-16 w-auto object-contain mb-8"
+          />
+
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted-foreground mb-4">
+            Client Shortlist  Digital Presence Audit
+          </p>
+
+          <h1 className="text-4xl font-bold tracking-tight text-foreground leading-tight mb-5">
+            These are the clients I have shortlisted and{" "}
+            <span className="text-primary">what we can pitch them</span>.
+          </h1>
+
+          <p className="text-sm leading-relaxed text-muted-foreground max-w-lg mb-10">
+            Six automotive and manufacturing companies: digital presence gaps across
+            website and LinkedIn, and pitch potential.
+          </p>
+
+          <div className="w-24 border-t border-border/70 my-4" />
+
+          <div className="flex flex-col items-center gap-1 mt-2">
+            <p className="text-xl font-bold tracking-tight text-foreground">
+              Om Prakash Esakkimuthu
+            </p>
+            <p className="text-xs font-semibold text-primary">
+              Business Development
+            </p>
+            <p className="mt-2 text-[11px] text-muted-foreground/75">
+              Jokar Creations Pvt. Ltd.  September 2026
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Web View Hero Section (Screen Only) */}
+      <section className="border-b no-print">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            Client shortlist · Business development
+            Client shortlist
           </p>
           <h1 className="mt-3 max-w-3xl text-2xl font-semibold leading-tight tracking-tight sm:text-4xl">
-            These are the clients I have shortlisted — and{" "}
+            These are the clients I have shortlisted and{" "}
             <span className="text-brand-gradient">what we can pitch them</span>.
           </h1>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -272,7 +337,7 @@ function AuditPage() {
             <button
               type="button"
               onClick={() => print(null)}
-              className="inline-flex items-center gap-2 rounded-lg bg-brand-gradient px-4 py-2 text-xs font-semibold text-primary-foreground sm:text-sm"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90 active:scale-[0.98] sm:text-sm"
             >
               <Download className="size-4" />
               Download full report
@@ -288,6 +353,11 @@ function AuditPage() {
               <ExternalLink className="size-3 opacity-60" />
             </a>
           </div>
+          <div className="no-print mt-4">
+            <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground mb-0.5">Prepared by</p>
+            <p className="text-sm font-semibold text-foreground">Om Prakash Esakkimuthu</p>
+            <p className="text-xs text-primary font-medium">Business Development</p>
+          </div>
         </div>
       </section>
 
@@ -300,7 +370,7 @@ function AuditPage() {
               onClick={() => setFilter(service)}
               className={
                 filter === service
-                  ? "rounded-full bg-brand-gradient px-3.5 py-1.5 text-xs font-medium text-primary-foreground"
+                  ? "rounded-full bg-primary px-3.5 py-1.5 text-xs font-medium text-primary-foreground shadow-sm"
                   : "rounded-full px-3.5 py-1.5 text-xs font-medium text-muted-foreground ring-1 ring-border transition hover:bg-secondary hover:text-foreground"
               }
             >
@@ -324,10 +394,10 @@ function AuditPage() {
         </div>
       </main>
 
-      <footer className="border-t">
+      <footer className="border-t no-print">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p className="text-xs text-muted-foreground">
-            Prepared by Jokar Creations Pvt. Ltd.
+            Prepared by Om Prakash Esakkimuthu  Business Development  Jokar Creations Pvt. Ltd.
           </p>
           <p className="text-xs text-muted-foreground">
             Follower counts recorded September 2026.

@@ -1,19 +1,19 @@
-import arvLinkedin from "@/assets/arv-linkedin.png.asset.json";
-import igarashiWebsite from "@/assets/igarashi-website.png.asset.json";
-import igarashiLinkedin from "@/assets/igarashi-linkedin.png.asset.json";
-import neccoWebsite from "@/assets/necco-website.png.asset.json";
-import neccoLinkedin from "@/assets/necco-linkedin.png.asset.json";
-import sundaramWebsite from "@/assets/sundaram-website.png.asset.json";
-import sundaramLinkedin from "@/assets/sundaram-linkedin.png.asset.json";
-import raneLinkedin from "@/assets/rane-linkedin.png.asset.json";
-import sancraftLinkedin from "@/assets/sancraft-linkedin.png.asset.json";
+import arvLinkedin from "@/assets/arv-linkedin.png";
+import igarashiWebsite from "@/assets/igarashi-website.png";
+import igarashiLinkedin from "@/assets/igarashi-linkedin.png";
+import neccoWebsite from "@/assets/necco-website.png";
+import neccoLinkedin from "@/assets/necco-linkedin.png";
+import sundaramWebsite from "@/assets/sundaram-website.png";
+import sundaramLinkedin from "@/assets/sundaram-linkedin.png";
+import raneLinkedin from "@/assets/rane-linkedin.png";
+import sancraftLinkedin from "@/assets/sancraft-linkedin.png";
 
-import arvLogo from "@/assets/arv-logo.png.asset.json";
-import neccoLogo from "@/assets/necco-logo.png.asset.json";
-import tvsLogo from "@/assets/tvs-logo.png.asset.json";
-import igarashiLogo from "@/assets/igarashi-logo.png.asset.json";
-import sancraftLogo from "@/assets/sancraft-logo.png.asset.json";
-import raneLogo from "@/assets/rane-logo.png.asset.json";
+import arvLogo from "@/assets/arv-logo.png";
+import neccoLogo from "@/assets/necco-logo.png";
+import tvsLogo from "@/assets/tvs-logo.png";
+import igarashiLogo from "@/assets/igarashi-logo.png";
+import sancraftLogo from "@/assets/sancraft-logo.png";
+import raneLogo from "@/assets/rane-logo.png";
 
 export type Evidence = {
   url: string;
@@ -52,14 +52,14 @@ export const auditEntries: AuditEntry[] = [
     id: "arv-automotive",
     company: "ARV Automotive",
     industry: "Coolant pumps, oil pumps & fan drive support",
-    logo: arvLogo.url,
+    logo: arvLogo,
     services: ["Website", "LinkedIn Management", "Corporate Video"],
     findings: [
       {
         area: "Website",
         short: "No website at all",
         detail:
-          "They currently do not have a website. arvmotors.com is a different company — ARV Motors, a Faridabad electric-vehicle maker founded in 2024 — so it is not theirs.",
+          "They currently do not have a website — high potential to pitch website dev.",
       },
       {
         area: "LinkedIn",
@@ -81,7 +81,7 @@ export const auditEntries: AuditEntry[] = [
     potential: ["Website", "LinkedIn Management", "Corporate Video"],
     evidence: [
       {
-        url: arvLinkedin.url,
+        url: arvLinkedin,
         caption: "ARV Auto LinkedIn — no jobs posted, dormant company page",
       },
     ],
@@ -90,7 +90,7 @@ export const auditEntries: AuditEntry[] = [
     id: "necco-tools",
     company: "Necco Tools",
     industry: "Precision machined components & tooling",
-    logo: neccoLogo.url,
+    logo: neccoLogo,
     services: ["Website Revamp", "LinkedIn Management", "Corporate Video"],
     findings: [
       {
@@ -114,11 +114,11 @@ export const auditEntries: AuditEntry[] = [
     potential: ["Website Revamp", "LinkedIn Management", "Corporate Video"],
     evidence: [
       {
-        url: neccoWebsite.url,
+        url: neccoWebsite,
         caption: "Necco Tools — page content delivered as flat images",
       },
       {
-        url: neccoLinkedin.url,
+        url: neccoLinkedin,
         caption: "Necco Tools LinkedIn — no posts yet on the company page",
       },
     ],
@@ -127,7 +127,7 @@ export const auditEntries: AuditEntry[] = [
     id: "sundaram-fasteners",
     company: "Sundaram Fasteners",
     industry: "High-tensile fasteners & precision components (TVS Group)",
-    logo: tvsLogo.url,
+    logo: tvsLogo,
     services: ["Website Revamp", "LinkedIn Management"],
     findings: [
       {
@@ -151,11 +151,11 @@ export const auditEntries: AuditEntry[] = [
     potential: ["Website Revamp", "LinkedIn Management"],
     evidence: [
       {
-        url: sundaramWebsite.url,
+        url: sundaramWebsite,
         caption: "Sundram Fasteners website — dated visual presentation",
       },
       {
-        url: sundaramLinkedin.url,
+        url: sundaramLinkedin,
         caption: "Sundram Fasteners LinkedIn — last post around 6 months ago",
       },
     ],
@@ -164,7 +164,7 @@ export const auditEntries: AuditEntry[] = [
     id: "igarashi-motors",
     company: "Igarashi Motors",
     industry: "Micro DC motors for automotive applications",
-    logo: igarashiLogo.url,
+    logo: igarashiLogo,
     services: ["Website Revamp", "LinkedIn Management"],
     findings: [
       {
@@ -188,11 +188,11 @@ export const auditEntries: AuditEntry[] = [
     potential: ["Website Revamp", "LinkedIn Management"],
     evidence: [
       {
-        url: igarashiWebsite.url,
+        url: igarashiWebsite,
         caption: "Igarashi Motors website — dated PHP-based layout",
       },
       {
-        url: igarashiLinkedin.url,
+        url: igarashiLinkedin,
         caption: "Igarashi India LinkedIn — placeholder logo and empty banner",
       },
     ],
@@ -201,7 +201,7 @@ export const auditEntries: AuditEntry[] = [
     id: "sancraft",
     company: "Sancraft",
     industry: "Sheet metal & industrial fabrication",
-    logo: sancraftLogo.url,
+    logo: sancraftLogo,
     services: ["LinkedIn Management"],
     findings: [
       {
@@ -219,7 +219,7 @@ export const auditEntries: AuditEntry[] = [
     potential: ["LinkedIn Management"],
     evidence: [
       {
-        url: sancraftLinkedin.url,
+        url: sancraftLinkedin,
         caption: "Sancraft Industries LinkedIn — no posts yet on the page",
       },
     ],
@@ -228,7 +228,7 @@ export const auditEntries: AuditEntry[] = [
     id: "rane-engine-valves",
     company: "Rane Engine Valves",
     industry: "Engine valves & valve train components",
-    logo: raneLogo.url,
+    logo: raneLogo,
     services: ["LinkedIn Management"],
     findings: [
       {
@@ -247,7 +247,7 @@ export const auditEntries: AuditEntry[] = [
     potential: ["LinkedIn Management"],
     evidence: [
       {
-        url: raneLinkedin.url,
+        url: raneLinkedin,
         caption: "Rane Engine Valve LinkedIn — last post around 2 years ago",
       },
     ],

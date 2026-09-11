@@ -132,41 +132,175 @@
     0 18px 40px -24px oklch(0 0 0 / 70%);
 }
 
-/* Print: one company per page */
+/* Print: Clean executive presentation without browser headers/footers */
 @media print {
   @page {
-    size: A4;
-    margin: 12mm;
+    size: A4 portrait;
+    margin: 0; /* Zero margin removes browser headers (localhost, timestamp, title, page numbers) */
   }
 
   html,
   body {
+    margin: 0 !important;
+    padding: 0 !important;
     background: var(--background) !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    color: var(--foreground) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    font-family: "Poppins", ui-sans-serif, system-ui, sans-serif !important;
+  }
+
+  * {
+    font-family: "Poppins", ui-sans-serif, system-ui, sans-serif !important;
   }
 
   .no-print {
     display: none !important;
   }
 
+  /* Remove gradient background-clip in print to prevent Chromium line artifacts */
+  .text-brand-gradient {
+    background: none !important;
+    background-image: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    color: var(--primary) !important;
+    -webkit-text-fill-color: var(--primary) !important;
+  }
+
+  /* Full report cover page */
+  .print-cover-page {
+    display: flex !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    padding: 20mm 15mm !important;
+    break-after: page !important;
+    page-break-after: always !important;
+    break-inside: avoid !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    background: var(--background) !important;
+    margin: 0 auto !important;
+    position: relative !important;
+  }
+
+  /* Ensure cover page h1 and all children are fully visible */
+  .print-cover-page h1 {
+    color: var(--foreground) !important;
+    -webkit-text-fill-color: var(--foreground) !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .print-cover-page h1 span {
+    color: var(--primary) !important;
+    -webkit-text-fill-color: var(--primary) !important;
+    background: none !important;
+    background-image: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+  }
+
+  /* Cover page author block */
+  .print-cover-page p {
+    color: var(--foreground) !important;
+    -webkit-text-fill-color: var(--foreground) !important;
+  }
+
+  /* Printable company card page - centered horizontally and vertically */
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+  }
+
   main > div {
     display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .print-page-container {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    padding: 10mm 12mm !important;
+    break-inside: avoid !important;
+    break-after: page !important;
+    page-break-after: always !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: var(--background) !important;
+    margin: 0 auto !important;
+  }
+
+  .print-page-container article {
+    width: 100% !important;
+    max-width: 175mm !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+  }
+
+  .print-page-container:last-child {
+    break-after: auto !important;
+    page-break-after: auto !important;
   }
 
   .print-page {
-    break-inside: avoid;
-    break-after: page;
-    margin-bottom: 0;
-    box-shadow: none;
+    break-inside: avoid !important;
+    box-shadow: none !important;
+    margin-bottom: 0 !important;
   }
 
-  .print-page:last-child {
-    break-after: auto;
+  /* Single page print overrides */
+  .print-single .print-cover-page {
+    display: none !important;
+  }
+
+  .print-single [data-print-container="true"]:not([data-print="true"]) {
+    display: none !important;
   }
 
   .print-single [data-card="true"]:not([data-print="true"]) {
     display: none !important;
+  }
+
+  /* Card footer links — render as clean hyperlinks in PDF */
+  [data-card="true"] a[href] {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    color: var(--primary) !important;
+    text-decoration: underline !important;
+    text-underline-offset: 2px !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    ring: none !important;
+    box-shadow: none !important;
+  }
+
+  [data-card="true"] a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 9px !important;
+    color: var(--muted-foreground) !important;
+    text-decoration: none !important;
+    word-break: break-all !important;
   }
 }
 
