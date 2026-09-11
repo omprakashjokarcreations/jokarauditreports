@@ -132,6 +132,44 @@
     0 18px 40px -24px oklch(0 0 0 / 70%);
 }
 
+/* Print: one company per page */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    background: var(--background) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  main > div {
+    display: block !important;
+  }
+
+  .print-page {
+    break-inside: avoid;
+    break-after: page;
+    margin-bottom: 0;
+    box-shadow: none;
+  }
+
+  .print-page:last-child {
+    break-after: auto;
+  }
+
+  .print-single [data-card="true"]:not([data-print="true"]) {
+    display: none !important;
+  }
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;
