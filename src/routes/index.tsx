@@ -255,11 +255,15 @@ function AuditPage() {
   const print = (id: string | null) => {
     if (id === null) setFilter("All");
     setPrintTarget(id);
-    requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => {
+    // Wait for fonts to be fully loaded before opening the print dialog.
+    // On first click, Poppins may still be fetching — document.fonts.ready
+    // resolves only once all fonts are loaded and ready to render.
+    document.fonts.ready.then(() => {
+      // Extra frame after fonts settle so print CSS overrides are fully applied.
+      setTimeout(() => {
         window.print();
         setPrintTarget(null);
-      });
+      }, 350);
     });
   };
 
