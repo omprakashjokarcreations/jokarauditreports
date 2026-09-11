@@ -8,6 +8,13 @@ import sundaramLinkedin from "@/assets/sundaram-linkedin.png.asset.json";
 import raneLinkedin from "@/assets/rane-linkedin.png.asset.json";
 import sancraftLinkedin from "@/assets/sancraft-linkedin.png.asset.json";
 
+import arvLogo from "@/assets/arv-logo.png.asset.json";
+import neccoLogo from "@/assets/necco-logo.png.asset.json";
+import tvsLogo from "@/assets/tvs-logo.png.asset.json";
+import igarashiLogo from "@/assets/igarashi-logo.png.asset.json";
+import sancraftLogo from "@/assets/sancraft-logo.png.asset.json";
+import raneLogo from "@/assets/rane-logo.png.asset.json";
+
 export type Evidence = {
   url: string;
   caption: string;
@@ -25,6 +32,7 @@ export type AuditEntry = {
   id: string;
   company: string;
   industry: string;
+  logo: string;
   services: string[];
   findings: Finding[];
   website: string | null;
@@ -44,12 +52,14 @@ export const auditEntries: AuditEntry[] = [
     id: "arv-automotive",
     company: "ARV Automotive",
     industry: "Coolant pumps, oil pumps & fan drive support",
+    logo: arvLogo.url,
     services: ["Website", "LinkedIn Management", "Corporate Video"],
     findings: [
       {
         area: "Website",
         short: "No website at all",
-        detail: "They currently do not have a website.",
+        detail:
+          "They currently do not have a website. arvmotors.com is a different company — ARV Motors, a Faridabad electric-vehicle maker founded in 2024 — so it is not theirs.",
       },
       {
         area: "LinkedIn",
@@ -63,8 +73,7 @@ export const auditEntries: AuditEntry[] = [
           "Opportunity to create a professional corporate profile showcasing their company, capabilities, infrastructure, and products.",
       },
     ],
-    website: "https://arvmotors.com/",
-    websiteNote: "To be verified",
+    website: null,
     linkedin: "https://www.linkedin.com/company/arvauto-epl/?originalSubdomain=in",
     followers: 264,
     followersLabel: "264",
@@ -78,50 +87,15 @@ export const auditEntries: AuditEntry[] = [
     ],
   },
   {
-    id: "igarashi-motors",
-    company: "Igarashi Motors",
-    industry: "Micro DC motors for automotive applications",
-    services: ["Website Revamp", "LinkedIn Management"],
-    findings: [
-      {
-        area: "Website",
-        short: "Outdated PHP site",
-        detail:
-          "Their current website is PHP-based and the design appears outdated, creating an opportunity for a modern website redesign.",
-      },
-      {
-        area: "LinkedIn",
-        short: "Inactive, old branding",
-        detail:
-          "Their LinkedIn presence is largely inactive. Basic brand assets such as the logo and banner are also not updated, indicating scope for improving their corporate presence.",
-      },
-    ],
-    website: "https://www.igarashimotors.com/",
-    linkedin: "https://www.linkedin.com/company/igarashi-india/?originalSubdomain=in",
-    followers: 207,
-    followersLabel: "207",
-    verdict: "Old site, inactive page, outdated branding.",
-    potential: ["Website Revamp", "LinkedIn Management"],
-    evidence: [
-      {
-        url: igarashiWebsite.url,
-        caption: "Igarashi Motors website — dated PHP-based layout",
-      },
-      {
-        url: igarashiLinkedin.url,
-        caption: "Igarashi India LinkedIn — placeholder logo and empty banner",
-      },
-    ],
-  },
-  {
     id: "necco-tools",
     company: "Necco Tools",
     industry: "Precision machined components & tooling",
+    logo: neccoLogo.url,
     services: ["Website Revamp", "LinkedIn Management", "Corporate Video"],
     findings: [
       {
         area: "Website",
-        short: "Content is just images",
+        short: "Website content is just images",
         detail:
           "Much of the website content is presented as images rather than properly structured web content. This creates a strong opportunity for a website revamp with better content structure, readability, and user experience.",
       },
@@ -152,7 +126,8 @@ export const auditEntries: AuditEntry[] = [
   {
     id: "sundaram-fasteners",
     company: "Sundaram Fasteners",
-    industry: "High-tensile fasteners & precision components",
+    industry: "High-tensile fasteners & precision components (TVS Group)",
+    logo: tvsLogo.url,
     services: ["Website Revamp", "LinkedIn Management"],
     findings: [
       {
@@ -186,9 +161,74 @@ export const auditEntries: AuditEntry[] = [
     ],
   },
   {
+    id: "igarashi-motors",
+    company: "Igarashi Motors",
+    industry: "Micro DC motors for automotive applications",
+    logo: igarashiLogo.url,
+    services: ["Website Revamp", "LinkedIn Management"],
+    findings: [
+      {
+        area: "Website",
+        short: "Outdated PHP site",
+        detail:
+          "Their current website is PHP-based and the design appears outdated, creating an opportunity for a modern website redesign.",
+      },
+      {
+        area: "LinkedIn",
+        short: "Inactive, old branding",
+        detail:
+          "Their LinkedIn presence is largely inactive. Basic brand assets such as the logo and banner are also not updated, indicating scope for improving their corporate presence.",
+      },
+    ],
+    website: "https://www.igarashimotors.com/",
+    linkedin: "https://www.linkedin.com/company/igarashi-india/?originalSubdomain=in",
+    followers: 207,
+    followersLabel: "207",
+    verdict: "Old site, inactive page, outdated branding.",
+    potential: ["Website Revamp", "LinkedIn Management"],
+    evidence: [
+      {
+        url: igarashiWebsite.url,
+        caption: "Igarashi Motors website — dated PHP-based layout",
+      },
+      {
+        url: igarashiLinkedin.url,
+        caption: "Igarashi India LinkedIn — placeholder logo and empty banner",
+      },
+    ],
+  },
+  {
+    id: "sancraft",
+    company: "Sancraft",
+    industry: "Sheet metal & industrial fabrication",
+    logo: sancraftLogo.url,
+    services: ["LinkedIn Management"],
+    findings: [
+      {
+        area: "LinkedIn",
+        short: "Almost no activity",
+        detail:
+          "Their LinkedIn presence has little to no recent activity. This creates an opportunity to establish consistent corporate communication through company updates, product content, industry insights, and other professional content.",
+      },
+    ],
+    website: "https://www.sancraftindustries.com/",
+    linkedin: "https://www.linkedin.com/company/sancraft-industries-pvt-ltd/",
+    followers: 497,
+    followersLabel: "497",
+    verdict: "Established page with almost nothing on it.",
+    potential: ["LinkedIn Management"],
+    evidence: [
+      {
+        url: sancraftLinkedin.url,
+        caption: "Sancraft Industries LinkedIn — no posts yet on the page",
+      },
+    ],
+  },
+  {
     id: "rane-engine-valves",
     company: "Rane Engine Valves",
     industry: "Engine valves & valve train components",
+    logo: raneLogo.url,
     services: ["LinkedIn Management"],
     findings: [
       {
@@ -212,33 +252,10 @@ export const auditEntries: AuditEntry[] = [
       },
     ],
   },
-  {
-    id: "sancraft",
-    company: "Sancraft",
-    industry: "Sheet metal & industrial fabrication",
-    services: ["LinkedIn Management"],
-    findings: [
-      {
-        area: "LinkedIn",
-        short: "Almost no activity",
-        detail:
-          "Their LinkedIn presence has little to no recent activity. This creates an opportunity to establish consistent corporate communication through company updates, product content, industry insights, and other professional content.",
-      },
-    ],
-    website: "https://www.sancraftindustries.com/",
-    linkedin: "https://www.linkedin.com/company/sancraft-industries-pvt-ltd/",
-    followers: 497,
-    followersLabel: "497",
-    verdict: "Established page with almost nothing on it.",
-    potential: ["LinkedIn Management"],
-    evidence: [
-      {
-        url: sancraftLinkedin.url,
-        caption: "Sancraft Industries LinkedIn — no posts yet on the page",
-      },
-    ],
-  },
 ];
+
+export const researchSheetUrl =
+  "https://docs.google.com/spreadsheets/d/1KTM0aIPLUNSuQ7K_FpKP5EghmK-Oko-jRpaFQ-DtFxo/edit?usp=sharing";
 
 export const allServices = [
   "Website",
