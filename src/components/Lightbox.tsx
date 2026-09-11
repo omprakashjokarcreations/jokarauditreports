@@ -40,26 +40,26 @@ export function Lightbox({ items, index, onIndexChange, title }: LightboxProps) 
   return (
     <Dialog.Root open={open} onOpenChange={(o) => !o && onIndexChange(null)}>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-50 bg-foreground/85 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in data-[state=closed]:fade-out" />
+        <Dialog.Overlay className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in data-[state=closed]:fade-out" />
         <Dialog.Content className="fixed inset-0 z-50 flex flex-col p-4 focus:outline-none data-[state=open]:animate-in data-[state=open]:zoom-in-95">
           <Dialog.Title className="sr-only">
             {title ? `${title} — evidence preview` : "Evidence preview"}
           </Dialog.Title>
 
-          <div className="flex items-center justify-between gap-4 text-primary-foreground">
+          <div className="flex items-center justify-between gap-4 text-white">
             <p className="truncate text-sm font-medium">{title}</p>
             <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={() => setZoomed((z) => !z)}
                 aria-label={zoomed ? "Fit to screen" : "Zoom in"}
-                className="rounded-full border border-primary-foreground/25 p-2 text-primary-foreground transition hover:bg-primary-foreground/15"
+                className="rounded-full border border-white/25 p-2 text-white transition hover:bg-white/15"
               >
                 {zoomed ? <ZoomOut className="size-4" /> : <ZoomIn className="size-4" />}
               </button>
               <Dialog.Close
                 aria-label="Close preview"
-                className="rounded-full border border-primary-foreground/25 p-2 text-primary-foreground transition hover:bg-primary-foreground/15"
+                className="rounded-full border border-white/25 p-2 text-white transition hover:bg-white/15"
               >
                 <X className="size-4" />
               </Dialog.Close>
@@ -111,7 +111,7 @@ export function Lightbox({ items, index, onIndexChange, title }: LightboxProps) 
             )}
           </div>
 
-          <div className="mt-3 text-center text-primary-foreground">
+          <div className="mt-3 text-center text-white">
             <p className="text-sm">{current?.caption}</p>
             {items.length > 1 && index !== null && (
               <p className="mt-1 text-xs opacity-60">
