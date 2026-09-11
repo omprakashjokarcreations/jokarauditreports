@@ -208,10 +208,15 @@
     background-clip: unset !important;
   }
 
-  /* Cover page author block */
-  .print-cover-page p {
+  /* Cover page body paragraphs — keep primary colour elements in purple */
+  .print-cover-page p:not([class*="text-primary"]) {
     color: var(--foreground) !important;
     -webkit-text-fill-color: var(--foreground) !important;
+  }
+
+  .print-cover-page p[class*="text-primary"],
+  .print-cover-page p[class*="text-muted"] {
+    -webkit-text-fill-color: currentColor !important;
   }
 
   /* Printable company card page - centered horizontally and vertically */

@@ -306,10 +306,13 @@ function AuditPage() {
           <div className="w-24 border-t border-border/70 my-4" />
 
           <div className="flex flex-col items-center gap-1 mt-2">
-            <p className="text-xl font-bold tracking-tight text-foreground">
+            <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground mb-1">
+              Prepared by
+            </p>
+            <p className="text-xl font-bold tracking-tight text-primary">
               Om Prakash Esakkimuthu
             </p>
-            <p className="text-xs font-semibold text-primary">
+            <p className="text-xs font-semibold text-foreground">
               Business Development
             </p>
             <p className="mt-2 text-[11px] text-muted-foreground/75">
