@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { Evidence } from "@/data/audit";
 
 type LightboxProps = {
@@ -12,8 +12,13 @@ type LightboxProps = {
 
 export function Lightbox({ items, index, onIndexChange, title }: LightboxProps) {
   const [zoomed, setZoomed] = useState(false);
+  const onIndexChangeRef = useRef(onIndexChange);
   const open = index !== null;
   const current = open ? items[index] : undefined;
+
+  useEffect(() => {
+    onIndexChangeRef.current = onIndexChange;
+  }, [onIndexChange]);
 
   useEffect(() => {
     setZoomed(false);
@@ -37,11 +42,33 @@ export function Lightbox({ items, index, onIndexChange, title }: LightboxProps) 
     return () => window.removeEventListener("keydown", onKey);
   }, [open, go]);
 
+  // Give a preview its own history entry. The phone/browser Back action then
+  // closes the preview and leaves the visitor on this page.
+  useEffect(() => {
+    if (!open) return;
+
+    window.history.pushState(
+      { ...(window.history.state ?? {}), evidencePreview: true },
+      "",
+    );
+    const onPopState = () => onIndexChangeRef.current(null);
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, [open]);
+
+  const closePreview = useCallback(() => {
+    if (window.history.state?.evidencePreview) window.history.back();
+    onIndexChangeRef.current(null);
+  }, []);
+
   return (
-    <Dialog.Root open={open} onOpenChange={(o) => !o && onIndexChange(null)}>
+    <Dialog.Root open={open} onOpenChange={(o) => !o && closePreview()}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in data-[state=closed]:fade-out" />
-        <Dialog.Content className="fixed inset-0 z-50 flex flex-col p-4 focus:outline-none data-[state=open]:animate-in data-[state=open]:zoom-in-95">
+        <Dialog.Content
+          onClick={closePreview}
+          className="fixed inset-0 z-50 flex flex-col p-4 focus:outline-none data-[state=open]:animate-in data-[state=open]:zoom-in-95"
+        >
           <Dialog.Title className="sr-only">
             {title ? `${title} — evidence preview` : "Evidence preview"}
           </Dialog.Title>
@@ -51,7 +78,10 @@ export function Lightbox({ items, index, onIndexChange, title }: LightboxProps) 
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                onClick={() => setZoomed((z) => !z)}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setZoomed((z) => !z);
+                }}
                 aria-label={zoomed ? "Fit to screen" : "Zoom in"}
                 className="rounded-full border border-white/25 p-2 text-white transition hover:bg-white/15"
               >
@@ -70,7 +100,10 @@ export function Lightbox({ items, index, onIndexChange, title }: LightboxProps) 
             {items.length > 1 && (
               <button
                 type="button"
-                onClick={() => go(-1)}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  go(-1);
+                }}
                 aria-label="Previous image"
                 className="absolute left-0 z-10 rounded-full bg-card/90 p-2.5 text-foreground shadow-lg transition hover:bg-card"
               >
@@ -89,7 +122,10 @@ export function Lightbox({ items, index, onIndexChange, title }: LightboxProps) 
                 <img
                   src={current.url}
                   alt={current.caption}
-                  onClick={() => setZoomed((z) => !z)}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setZoomed((z) => !z);
+                  }}
                   className={
                     zoomed
                       ? "w-auto max-w-none cursor-zoom-out"
@@ -102,7 +138,10 @@ export function Lightbox({ items, index, onIndexChange, title }: LightboxProps) 
             {items.length > 1 && (
               <button
                 type="button"
-                onClick={() => go(1)}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  go(1);
+                }}
                 aria-label="Next image"
                 className="absolute right-0 z-10 rounded-full bg-card/90 p-2.5 text-foreground shadow-lg transition hover:bg-card"
               >

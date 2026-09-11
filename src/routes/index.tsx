@@ -75,10 +75,10 @@ function AuditCard({
         className="card-surface print-page relative flex break-inside-avoid flex-col overflow-hidden rounded-2xl border transition-shadow hover:shadow-brand"
       >
         {/* Banner */}
-        <div className="bg-brand-gradient-soft relative z-10 border-b px-5 py-5 sm:px-6">
+        <div className="print-card-banner bg-brand-gradient-soft relative z-10 border-b px-5 py-5 sm:px-6">
           <div className="flex items-start justify-between gap-4">
             <div className="flex min-w-0 items-center gap-3">
-              <span className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-white p-2 shadow-lg">
+              <span className="print-card-logo flex size-14 shrink-0 items-center justify-center rounded-xl bg-white p-2 shadow-lg">
                 <img
                   src={entry.logo}
                   alt={`${entry.company} logo`}
@@ -94,7 +94,7 @@ function AuditCard({
                 </p>
               </div>
             </div>
-            <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-background/60 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+            <span className="print-card-followers inline-flex shrink-0 items-center gap-1.5 rounded-full bg-background/60 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
               <Users className="size-3" />
               {entry.followersLabel}
             </span>
@@ -104,11 +104,11 @@ function AuditCard({
           <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
             What we pitch
           </p>
-          <div className="mt-2 flex flex-wrap gap-2">
+          <div className="print-card-pitch mt-2 flex flex-wrap gap-2">
             {entry.potential.map((item) => (
               <span
                 key={item}
-                className="rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow-sm"
+                className="print-card-pitch-item rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow-sm"
               >
                 {item}
               </span>

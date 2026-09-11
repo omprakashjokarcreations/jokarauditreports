@@ -270,6 +270,22 @@
     margin-bottom: 0 !important;
   }
 
+  /* Keep the downloadable cards clean: these screen-only surface treatments
+     can print as unwanted rectangular backgrounds in Chromium. */
+  .print-card-banner,
+  .print-card-logo,
+  .print-card-followers,
+  .print-card-pitch {
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  .print-card-logo,
+  .print-card-followers {
+    border-radius: 0 !important;
+  }
+
   /* Single page print overrides */
   .print-single .print-cover-page {
     display: none !important;
