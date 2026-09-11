@@ -16,6 +16,8 @@ export type Evidence = {
 export type Finding = {
   /** Service area this finding belongs to */
   area: "Website" | "LinkedIn" | "Corporate Video";
+  /** Short scannable verdict — a few words only */
+  short: string;
   detail: string;
 };
 
@@ -30,6 +32,10 @@ export type AuditEntry = {
   linkedin: string;
   followers: number;
   followersLabel: string;
+  /** One-line verdict shown at the top of the card */
+  verdict: string;
+  /** What we can do for them */
+  potential: string[];
   evidence: Evidence[];
 };
 
