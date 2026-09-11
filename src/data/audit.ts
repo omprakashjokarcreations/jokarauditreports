@@ -46,14 +46,19 @@ export const auditEntries: AuditEntry[] = [
     industry: "Coolant pumps, oil pumps & fan drive support",
     services: ["Website", "LinkedIn Management", "Corporate Video"],
     findings: [
-      { area: "Website", detail: "They currently do not have a website." },
+      {
+        area: "Website",
+        short: "No website at all",
+        detail: "They currently do not have a website.",
+      },
       {
         area: "LinkedIn",
-        detail:
-          "Their LinkedIn presence is not being utilized — 0 posts and 0 job postings.",
+        short: "0 posts, 0 jobs",
+        detail: "Their LinkedIn presence is not being utilized — 0 posts and 0 job postings.",
       },
       {
         area: "Corporate Video",
+        short: "No corporate video",
         detail:
           "Opportunity to create a professional corporate profile showcasing their company, capabilities, infrastructure, and products.",
       },
@@ -63,6 +68,8 @@ export const auditEntries: AuditEntry[] = [
     linkedin: "https://www.linkedin.com/company/arvauto-epl/?originalSubdomain=in",
     followers: 264,
     followersLabel: "264",
+    verdict: "No website, dormant LinkedIn, no video.",
+    potential: ["Website", "LinkedIn Management", "Corporate Video"],
     evidence: [
       {
         url: arvLinkedin.url,
@@ -78,11 +85,13 @@ export const auditEntries: AuditEntry[] = [
     findings: [
       {
         area: "Website",
+        short: "Outdated PHP site",
         detail:
           "Their current website is PHP-based and the design appears outdated, creating an opportunity for a modern website redesign.",
       },
       {
         area: "LinkedIn",
+        short: "Inactive, old branding",
         detail:
           "Their LinkedIn presence is largely inactive. Basic brand assets such as the logo and banner are also not updated, indicating scope for improving their corporate presence.",
       },
@@ -91,6 +100,8 @@ export const auditEntries: AuditEntry[] = [
     linkedin: "https://www.linkedin.com/company/igarashi-india/?originalSubdomain=in",
     followers: 207,
     followersLabel: "207",
+    verdict: "Old site, inactive page, outdated branding.",
+    potential: ["Website Revamp", "LinkedIn Management"],
     evidence: [
       {
         url: igarashiWebsite.url,
@@ -110,11 +121,13 @@ export const auditEntries: AuditEntry[] = [
     findings: [
       {
         area: "Website",
+        short: "Content is just images",
         detail:
           "Much of the website content is presented as images rather than properly structured web content. This creates a strong opportunity for a website revamp with better content structure, readability, and user experience.",
       },
       {
         area: "Corporate Video",
+        short: "No corporate video",
         detail:
           "No corporate video was identified publicly, creating an opportunity to showcase their company, products, and capabilities through video.",
       },
@@ -123,6 +136,8 @@ export const auditEntries: AuditEntry[] = [
     linkedin: "https://www.linkedin.com/company/necco-tools---india/?originalSubdomain=in",
     followers: 236,
     followersLabel: "236",
+    verdict: "Image-based website, quiet LinkedIn, no video.",
+    potential: ["Website Revamp", "LinkedIn Management", "Corporate Video"],
     evidence: [
       {
         url: neccoWebsite.url,
@@ -142,11 +157,13 @@ export const auditEntries: AuditEntry[] = [
     findings: [
       {
         area: "Website",
+        short: "Dated design",
         detail:
           "The current website has a basic and dated visual presentation, creating scope for a modern corporate website revamp.",
       },
       {
         area: "LinkedIn",
+        short: "6,000 followers, silent 6 months",
         detail:
           "They have approximately 6,000 followers and were active around 6–8 months ago. Since they already have an established audience and previous activity, there is potential to restart and improve their LinkedIn presence.",
       },
@@ -155,6 +172,8 @@ export const auditEntries: AuditEntry[] = [
     linkedin: "https://www.linkedin.com/company/sundram-fasteners",
     followers: 6000,
     followersLabel: "6,000",
+    verdict: "Big audience, dated site, posting stopped.",
+    potential: ["Website Revamp", "LinkedIn Management"],
     evidence: [
       {
         url: sundaramWebsite.url,
@@ -174,6 +193,7 @@ export const auditEntries: AuditEntry[] = [
     findings: [
       {
         area: "LinkedIn",
+        short: "Silent for 2 years",
         detail:
           "They were previously active on LinkedIn but appear to have stopped around 2 years ago. This creates an opportunity to understand the reason behind the inactivity and propose a strategy to restart their LinkedIn presence for visibility, credibility, and business development.",
       },
@@ -183,6 +203,8 @@ export const auditEntries: AuditEntry[] = [
       "https://www.linkedin.com/company/rane-engine-valve-limited-revl/?originalSubdomain=in",
     followers: 7000,
     followersLabel: "7,000",
+    verdict: "7,000 followers and two years of silence.",
+    potential: ["LinkedIn Management"],
     evidence: [
       {
         url: raneLinkedin.url,
@@ -198,6 +220,7 @@ export const auditEntries: AuditEntry[] = [
     findings: [
       {
         area: "LinkedIn",
+        short: "Almost no activity",
         detail:
           "Their LinkedIn presence has little to no recent activity. This creates an opportunity to establish consistent corporate communication through company updates, product content, industry insights, and other professional content.",
       },
@@ -206,6 +229,8 @@ export const auditEntries: AuditEntry[] = [
     linkedin: "https://www.linkedin.com/company/sancraft-industries-pvt-ltd/",
     followers: 497,
     followersLabel: "497",
+    verdict: "Established page with almost nothing on it.",
+    potential: ["LinkedIn Management"],
     evidence: [
       {
         url: sancraftLinkedin.url,
